@@ -1,10 +1,10 @@
 var BigNumber = require('bignumber.js');
 
-var Ether     = new BigNumber(10e+17);
+var Ether = new BigNumber(10e+17);
 
 function formatAmount(amount) {
   var ret = new BigNumber(amount.toString());
-  
-  return ret.dividedBy(Ether) + " ETH";
+
+  return ret.dividedBy(Ether) + " RCX";
 }
 module.exports = formatAmount;

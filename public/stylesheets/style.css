@@ -1,10 +1,12 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  color: black;
+  background-color: white;
 }
 
 a {
-  color: #00B7FF;
+  color: black;
 }
 
 .capitalize {
@@ -25,4 +27,42 @@ pre {
   white-space: -pre-wrap;      /* Opera 4-6 */
   white-space: -o-pre-wrap;    /* Opera 7 */
   word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+
+.navbar-form {
+    margin-top: 4px;
+}
+
+.navbar {
+    color: white;
+    border: none;
+    background-color: black;
+}
+
+.navbar a {
+    color: white !important;
+}
+
+.navbar-nav > li > a {
+    font-size: 14px;
+}
+
+.navbar a:focus {
+    color: white;
+}
+
+th {
+    border-color: rgb(0,0,0,0.1) !important;
+}
+
+.dropdown-menu > li > a {
+    color: rgb(0,0,0,0.9) !important;
+}
+
+.dropdown-menu > li > a:hover {
+    color: rgb(255,255,255,0.9) !important;
+}
+
+a:hover {
+    color: rgb(0,0,0, 0.6);
 }
