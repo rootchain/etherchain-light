@@ -103,8 +103,9 @@ router.get('/:account', function(req, res, next) {
       if (!blocks[trace.blockNumber]) {
         blocks[trace.blockNumber] = [];
       }
-      
-      blocks[trace.blockNumber].push(trace);
+      if (trace.type !== 'reward') {
+        blocks[trace.blockNumber].push(trace);
+      }
     });
     data.tracesReceived.forEach(function(trace) {
       if (!blocks[trace.blockNumber]) {
