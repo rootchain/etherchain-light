@@ -14,7 +14,7 @@ var contract = require('./routes/contract');
 var signature = require('./routes/signature');
 var search = require('./routes/search');
 
-var config = new(require('./config.js'))();
+var config = new (require('./config.js'))();
 
 var levelup = require('levelup');
 var db = levelup('./data');
@@ -41,8 +41,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.locals.moment = require('moment');
 app.locals.numeral = require('numeral');
 app.locals.ethformatter = require('./utils/ethformatter.js');
-app.locals.nameformatter = new(require('./utils/nameformatter.js'))(config);
-app.locals.nodeStatus = new(require('./utils/nodeStatus.js'))(config);
+app.locals.roundNumber = require('./utils/roundNumber.js');
+app.locals.nameformatter = new (require('./utils/nameformatter.js'))(config);
+app.locals.nodeStatus = new (require('./utils/nodeStatus.js'))(config);
 app.locals.config = config;
 
 app.use('/', index);
@@ -55,14 +56,14 @@ app.use('/signature', signature);
 app.use('/search', search);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};

@@ -18,24 +18,25 @@
  */
 
 function commas(number) {
-  var parts = number.toString().split(".");
-  parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  return parts.join(".");
+  var parts = number.toString().split('.');
+  parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  return parts.join('.');
 }
 
 function abbreviate(address) {
-  return address.slice(0, 25) + "...";
+  return address.slice(0, 25) + '...';
 }
 
 function magnitude(oom) {
   var mfo3 = Math.floor(oom / 3);
-  var text = { 1: "K", 2: "M", 3: "B", 4: "T", 5: "Q" }[mfo3];
+  var nth = { 1: 'K', 2: 'M', 3: 'B', 4: 'T', 5: 'Q' }[mfo3];
+  var text = nth && '<small class="nth">' + nth + '</small>';
   var value;
   if (text) {
     value = Math.pow(1000, mfo3);
   } else {
     value = Math.pow(10, oom);
-    text = "&times;10<sup>" + ("" + oom).replace("-", "&#8209;") + "</sup>";
+    text = '&times;10<sup>' + ('' + oom).replace(' - ', ' &#8209; ') + '</sup>';
   }
   return { value: value, text: text };
 }
@@ -44,7 +45,7 @@ function roundNumber(number) {
   number = parseFloat(number);
   var man = Math.abs(number);
 
-  if (number === 0 || (man < 100000.00 && man > 0.00001)) {
+  if (number === 0 || (man < 1000.00 && man > 0.00001)) {
     return commas(Math.round(number * 100) / 100);
   } else {
     var oom = Math.floor((Math.log(man) + 0.00000000000001) / Math.LN10);

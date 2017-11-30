@@ -2,9 +2,13 @@ extends layout
 
 block content
   if account.isContract
-    h3 Contract #{account.address}
+    h3
+      span  Contract
+      small &nbsp;#{account.address}
   else
-    h3 Account #{account.address}
+    h3
+      span  Account
+      small &nbsp;#{account.address}
   table.table
     tr
       td Balance:
@@ -48,9 +52,9 @@ block content
                       a(href="/block/" + trace.blockNumber) #{trace.blockHash.substr(0, 12)}...
                     td
                       a(href="/block/" + trace.blockNumber) #{trace.blockNumber}
-                    td Mining Reward
+                    td Reward
                     td
-                    td New Coins
+                    td New Supply
                     td 
                       a(href="/account/" + trace.action.author) #{nameformatter.format(trace.action.author)}
                     td !{ethformatter(trace.action.value)}

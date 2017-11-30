@@ -20,16 +20,16 @@ block content
         a(href="/account/" + uncle.author) #{nameformatter.format(uncle.author)}
     tr
       td Gas Limit:
-      td #{numeral(uncle.gasLimit).format()}
+      td !{roundNumber(uncle.gasLimit)}
     tr
       td Gas Used:
-      td #{numeral(uncle.gasUsed).format()}
+      td !{roundNumber(uncle.gasUsed)}
     tr
       td Difficulty:
-      td #{numeral(uncle.difficulty).format()}
+      td !{roundNumber(uncle.difficulty)}
     tr
       td Total Difficulty:
-      td #{numeral(uncle.totalDifficulty).format()}
+      td !{roundNumber(uncle.totalDifficulty)}
     tr
       td Timestamp:
       td #{moment.unix(uncle.timestamp).format()} (#{moment.unix(uncle.timestamp).fromNow()})

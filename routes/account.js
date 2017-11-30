@@ -107,9 +107,7 @@ router.get('/:account', function (req, res, next) {
       }
       if (trace.type !== 'reward' || !rewardBlocks[num]) {
         blocks[num].push(trace);
-        if (trace.type === 'reward') {
-          rewardBlocks[num] = true;
-        }
+        rewardBlocks[num] = trace.type === 'reward' || rewardBlocks[num];
       }
     });
     data.tracesReceived.forEach(function (trace) {
@@ -119,9 +117,7 @@ router.get('/:account', function (req, res, next) {
       }
       if (trace.type !== 'reward' || !rewardBlocks[num]) {
         blocks[num].push(trace);
-        if (trace.type === 'reward') {
-          rewardBlocks[num] = true;
-        }
+        rewardBlocks[num] = trace.type === 'reward' || rewardBlocks[num];
       }
     });
 

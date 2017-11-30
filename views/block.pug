@@ -6,7 +6,9 @@ block content
     .col-md-1
       a.btn.btn-default(href="/block/" + (block.number - 1), role="button") Previous
     .col-md-10.text-center
-      h3.block-title Block #{block.number}
+      h3.block-title
+        span  Block
+        small &nbsp;#{block.number}
     .col-md-1
       a.btn.btn-default(href="/block/" + (block.number + 1), role="button") Next
 

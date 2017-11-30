@@ -34,10 +34,10 @@ block content
       td #{tx.nonce}
     tr
       td Gas Limit:
-      td #{tx.gas}
+      td !{roundNumber(tx.gas)}
     tr
       td Gas Used:
-      td #{tx.gasUsed}
+      td !{roundNumber(tx.gasUsed)}
     tr
       td Gas Price: 
       td !{ethformatter(tx.gasPrice)}
