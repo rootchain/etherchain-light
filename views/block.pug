@@ -38,7 +38,7 @@ block content
       td !{roundNumber(block.totalDifficulty)}
     tr
       td Timestamp:
-      td #{moment.unix(block.timestamp).format()} (#{moment.unix(block.timestamp).fromNow()})
+      td #{moment.unix(block.timestamp).format('MMMM D, YYYY @ H:mm:ss')} (#{moment.unix(block.timestamp).fromNow()})
     tr
       td Size:
       td !{roundNumber(block.size)}

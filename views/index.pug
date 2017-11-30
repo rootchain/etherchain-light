@@ -20,7 +20,7 @@ block content
             a(href="/block/" + block.number) #{block.hash.substr(0, 12)}...
           td.text-center 
             a(href="/account/" + block.author) #{nameformatter.format(block.author)}
-          td.text-center #{moment.unix(block.timestamp).format('MMMM D YYYY H:mm:ss')}
+          td.text-center #{moment.unix(block.timestamp).format('MMMM D, YYYY @ H:mm:ss')}
           td.text-center #{block.transactions.length}
           td.text-center #{block.uncles.length}
   h3 Recent Transactions
