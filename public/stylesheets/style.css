@@ -117,3 +117,13 @@ h3.block-title {
 .navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
   border-color: rgb(255,255,255,0.05);
 }
+
+::-moz-selection {
+  color: white;
+  background: black;
+}
+
+::selection {
+  color: white;
+  background: black;
+}
