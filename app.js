@@ -19,6 +19,8 @@ var config = new (require('./config.js'))();
 var levelup = require('levelup');
 var db = levelup('./data');
 
+var mongodb = require('./mongodb');
+
 var app = express();
 
 // view engine setup
@@ -26,6 +28,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 app.set('config', config);
 app.set('db', db);
+app.set('mongodb', mongodb);
 app.set('trust proxy', true);
 
 // uncomment after placing your favicon in /public

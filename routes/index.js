@@ -1,4 +1,5 @@
 var express = require('express');
+var BigNumber = require('bignumber.js');
 var router = express.Router();
 
 var async = require('async');
@@ -32,22 +33,27 @@ router.get('/', function (req, res, next) {
       }, function (err, blocks) {
         callback(err, blocks);
       });
+    }, function (blocks, callback) {
+      var mongodb = req.app.get('mongodb');
+
+      mongodb.Transaction
+        .find({})
+        .lean(true)
+        .sort('-blockNumber')
+        .limit(5)
+        .exec(function (err, txs) {
+          txs.forEach(tx => {
+            tx.value = new BigNumber(10e+17).times(tx.value);
+          })
+          callback(err, { blocks: blocks, txs: txs });
+        });
     }
-  ], function (err, blocks) {
+  ], function (err, ctx) {
     if (err) {
       return next(err);
     }
 
-    var txs = [];
-    blocks.forEach(function (block) {
-      block.transactions.forEach(function (tx) {
-        if (txs.length === 10) {
-          return;
-        }
-        txs.push(tx);
-      });
-    });
-    res.render('index', { blocks: blocks, txs: txs });
+    res.render('index', ctx);
   });
 
 });
