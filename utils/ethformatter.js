@@ -8,7 +8,7 @@ function toEther(amount) {
 }
 
 function roundEther(amount) {
-  return roundNumber(toEther(amount).toString()) + ' <small class="fnx">RCX</small>';
+  return roundNumber(toEther(amount)) + ' <small class="fnx">RCX</small>';
 }
 
 module.exports = roundEther;
