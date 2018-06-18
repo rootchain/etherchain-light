@@ -3,6 +3,7 @@ var router = express.Router();
 
 var async = require('async');
 var Web3 = require('web3');
+var BigNumber = require('bignumber.js');
 
 router.get('/:account', function (req, res, next) {
 
@@ -80,6 +81,30 @@ router.get('/:account', function (req, res, next) {
       }
 
 
+    }, function (callback) {
+      var addr = req.params.account.toLowerCase();
+      var limit = 15; // parseInt(req.query.length);
+      var start = 0; //parseInt(req.query.start);
+      // var count = parseInt(req.query.count);
+      // var data = { draw: parseInt(req.body.draw), recordsFiltered: count, recordsTotal: count, mined: 0 };
+      var mongodb = req.app.get('mongodb');
+
+      mongodb.Transaction.find({ $or: [{ "to": addr }, { "from": addr }] })
+        .lean(true)
+        .sort('-blockNumber')
+        .skip(start)
+        .limit(limit)
+        .exec("find", function (err, txs) {
+          if (txs) {
+            txs.forEach(tx => {
+              tx.value = new BigNumber(10e+17).times(tx.value);
+            })
+            data.transactions = txs;
+          } else {
+            data.transactions = [];
+          }
+          callback(err);
+        });
     }, function (callback) {
       web3.trace.filter({ "fromBlock": "0x" + data.fromBlock.toString(16), "fromAddress": [req.params.account] }, function (err, traces) {
         callback(err, traces);

@@ -1,9 +1,9 @@
 var express = require('express');
-var BigNumber = require('bignumber.js');
 var router = express.Router();
 
 var async = require('async');
 var Web3 = require('web3');
+var BigNumber = require('bignumber.js');
 
 
 router.get('/', function (req, res, next) {
