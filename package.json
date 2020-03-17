@@ -6,7 +6,7 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
-    "abi-decoder": "^1.0.9",
+    "abi-decoder": "^1.2.0",
     "async": "^2.1.5",
     "bignumber.js": "^4.0.0",
     "body-parser": "~1.18.2",
@@ -24,10 +24,10 @@
     "numeral": "^2.0.6",
     "pug": "~2.0.0-beta10",
     "serve-favicon": "~2.4.5",
-    "solc": "^0.4.9",
+    "solc": "^0.5.11",
     "string-similarity": "^1.1.0",
     "tmp": "0.0.31",
     "web3": "git+https://github.com/gobitfly/web3.js.git#develop",
-    "yargs": "^7.0.1"
+    "yargs": "^13.1.0"
   }
 }
